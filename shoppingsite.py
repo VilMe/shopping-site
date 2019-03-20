@@ -78,17 +78,17 @@ def show_shopping_cart():
     if 'cart' in session:
         current_cart = session['cart']
         melons_in_cart = []
+        grand_total = 0
         print(session)
         for melon_id in current_cart:
             cart_melon = melons.get_by_id(melon_id)
             quantity = current_cart[melon_id]
             cart_melon.quantity = quantity
             cart_melon.melon_total = cart_melon.quantity * cart_melon.price
-            print(cart_melon.melon_total)
+            grand_total += cart_melon.melon_total
             melons_in_cart.append(cart_melon)
 
-
-        print(melons_in_cart)
+        print(grand_total)
 
 
     return render_template("cart.html")
