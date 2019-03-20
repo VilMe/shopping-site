@@ -79,7 +79,6 @@ def show_shopping_cart():
         current_cart = session['cart']
         melons_in_cart = []
         grand_total = 0
-        print(session)
         for melon_id in current_cart:
             cart_melon = melons.get_by_id(melon_id)
             quantity = current_cart[melon_id]
@@ -113,7 +112,6 @@ def add_to_cart(melon_id):
     # - flash a success message
     # - redirect the user to the cart page
     melon_id = melon_id
-    print(melon_id)
 
     if 'cart' in session:
         current_cart = session['cart']
