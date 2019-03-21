@@ -86,7 +86,7 @@ def show_shopping_cart():
             cart_melon.melon_total = cart_melon.quantity * cart_melon.price
             grand_total += cart_melon.melon_total
             melons_in_cart.append(cart_melon)
-
+        grand_total="${:.2f}".format(grand_total)
         
 
 

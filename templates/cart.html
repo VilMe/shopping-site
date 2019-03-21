@@ -4,15 +4,15 @@
 {% block body %}
 
     <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Melon Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        </thead>
         {% for melon in melons_in_cart %}
-            <thead>
-            <tr>
-                <th>Melon Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
-            </tr>
-            </thead>
             <tbody>
             <tr>
                 <td>{{ melon.common_name}}</td>
@@ -20,8 +20,9 @@
                 <td>{{ melon.price_str() }}</td>
                 <td>{{ melon.melon_total }}</td>
             </tr>
-            </tbody>
         {% endfor %}
+        </tbody>
+        
     </table>
 
     <h3>Total: {{ grand_total }}</h3>
