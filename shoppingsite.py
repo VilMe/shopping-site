@@ -87,10 +87,12 @@ def show_shopping_cart():
             grand_total += cart_melon.melon_total
             melons_in_cart.append(cart_melon)
 
-        print(grand_total)
+        
 
 
-    return render_template("cart.html")
+    return render_template("cart.html",
+                            melons_in_cart=melons_in_cart,
+                            grand_total=grand_total)
 
 
 @app.route("/add_to_cart/<melon_id>")
@@ -112,7 +114,6 @@ def add_to_cart(melon_id):
     # - flash a success message
     # - redirect the user to the cart page
     melon_id = melon_id
-
     if 'cart' in session:
         current_cart = session['cart']
         if melon_id in current_cart:
