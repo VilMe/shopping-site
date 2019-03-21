@@ -83,8 +83,10 @@ def show_shopping_cart():
             cart_melon = melons.get_by_id(melon_id)
             quantity = current_cart[melon_id]
             cart_melon.quantity = quantity
-            cart_melon.melon_total = cart_melon.quantity * cart_melon.price
-            grand_total += cart_melon.melon_total
+            melon_total = cart_melon.quantity * cart_melon.price
+            grand_total += melon_total
+            melon_total = "${:.2f}".format(melon_total)
+            cart_melon.melon_total = melon_total
             melons_in_cart.append(cart_melon)
         grand_total="${:.2f}".format(grand_total)
         

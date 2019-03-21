@@ -12,16 +12,16 @@
             <th>Total</th>
         </tr>
         </thead>
-        {% for melon in melons_in_cart %}
             <tbody>
-            <tr>
-                <td>{{ melon.common_name}}</td>
-                <td>{{ melon.quantity }}</td>
-                <td>{{ melon.price_str() }}</td>
-                <td>{{ melon.melon_total }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
+                {% for melon in melons_in_cart %}
+                    <tr>
+                        <td>{{ melon.common_name}}</td>
+                        <td>{{ melon.quantity }}</td>
+                        <td>{{ melon.price_str() }}</td>
+                        <td>{{ melon.melon_total }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         
     </table>
 
