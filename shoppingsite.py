@@ -90,6 +90,9 @@ def show_shopping_cart():
                 cart_melon.melon_total = melon_total
                 melons_in_cart.append(cart_melon)
             grand_total="${:.2f}".format(grand_total)
+        else:
+            flash ('No melons added to cart, yet!')
+            return redirect('/melons')  
     else:
         flash ('No melons added to cart, yet!')
         return redirect('/melons')
