@@ -75,20 +75,24 @@ def show_shopping_cart():
     #
     # Make sure your function can also handle the case wherein no cart has
     # been added to the session
-    if 'cart' in session:
-        current_cart = session['cart']
-        melons_in_cart = []
-        grand_total = 0
-        for melon_id in current_cart:
-            cart_melon = melons.get_by_id(melon_id)
-            quantity = current_cart[melon_id]
-            cart_melon.quantity = quantity
-            melon_total = cart_melon.quantity * cart_melon.price
-            grand_total += melon_total
-            melon_total = "${:.2f}".format(melon_total)
-            cart_melon.melon_total = melon_total
-            melons_in_cart.append(cart_melon)
-        grand_total="${:.2f}".format(grand_total)
+    if session:
+        if 'cart' in session:
+            current_cart = session['cart']
+            melons_in_cart = []
+            grand_total = 0
+            for melon_id in current_cart:
+                cart_melon = melons.get_by_id(melon_id)
+                quantity = current_cart[melon_id]
+                cart_melon.quantity = quantity
+                melon_total = cart_melon.quantity * cart_melon.price
+                grand_total += melon_total
+                melon_total = "${:.2f}".format(melon_total)
+                cart_melon.melon_total = melon_total
+                melons_in_cart.append(cart_melon)
+            grand_total="${:.2f}".format(grand_total)
+    else:
+        flash ('No melons added to cart, yet!')
+        return redirect('/melons')
         
 
 
