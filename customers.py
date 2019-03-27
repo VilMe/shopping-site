@@ -5,10 +5,10 @@ class Customer(object):
     """Ubermelon customer."""
 
     def __init__ (self,
-                  self.first_name,
-                  self.last_name,
-                  self.email,
-                  self.password
+                  first_name,
+                  last_name,
+                  email,
+                  password
                   ):
         self.first_name = first_name
         self.last_name = last_name
@@ -29,5 +29,19 @@ def read_customers_from_file(filepath):
     dictionary of customer
     
     """
+    customer_dict = {}
+    with open(filepath) as file:
+        for line in file:
+            (first_name,
+             last_name,
+             email,
+             password) = line.strip().split("|")
+
+
+            customer_dict[email]=Customer(first_name,
+                                          last_name,
+                                          email,
+                                          password)
+    return customer_dict
 
 
