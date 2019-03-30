@@ -93,12 +93,12 @@ def show_shopping_cart():
                 melon_total = "${:.2f}".format(melon_total)
                 cart_melon.melon_total = melon_total
                 melons_in_cart.append(cart_melon)
-            grand_total="${:.2f}".format(grand_total)
 
         else:
-            grand_total="${:.2f}".format(grand_total)
             flash ('No melons added to cart, yet!')
-        
+            
+        grand_total="${:.2f}".format(grand_total)
+
 
 
     return render_template("cart.html",
