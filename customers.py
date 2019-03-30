@@ -45,3 +45,10 @@ def read_customers_from_file(filepath):
     return customer_dict
 
 
+def get_customer_by_email(email):
+    """ return customer given customer email """
+    # needs access to the global dicctionary 'customer dic'
+    return customer_dict[email]
+
+customer_dict = read_customers_from_file("customers.txt")
+
