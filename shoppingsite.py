@@ -78,9 +78,9 @@ def show_shopping_cart():
     # Make sure your function can also handle the case wherein no cart has
     # been added to the session
 
+    melons_in_cart = []
+    grand_total = 0
     if session:
-        melons_in_cart = []
-        grand_total = 0
         if 'cart' in session:
             current_cart = session['cart']
             print(melons_in_cart)
@@ -95,9 +95,9 @@ def show_shopping_cart():
                 melons_in_cart.append(cart_melon)
             grand_total="${:.2f}".format(grand_total)
 
-    else:
-        grand_total="${:.2f}".format(grand_total)
-        flash ('No melons added to cart, yet!')
+        else:
+            grand_total="${:.2f}".format(grand_total)
+            flash ('No melons added to cart, yet!')
         
 
 
