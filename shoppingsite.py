@@ -79,10 +79,10 @@ def show_shopping_cart():
     # been added to the session
 
     if session:
+        melons_in_cart = []
+        grand_total = 0
         if 'cart' in session:
             current_cart = session['cart']
-            melons_in_cart = []
-            grand_total = 0
             print(melons_in_cart)
             for melon_id in current_cart:
                 cart_melon = melons.get_by_id(melon_id)
@@ -96,8 +96,6 @@ def show_shopping_cart():
             grand_total="${:.2f}".format(grand_total)
 
     else:
-        melons_in_cart = []
-        grand_total = 0
         grand_total="${:.2f}".format(grand_total)
         flash ('No melons added to cart, yet!')
         
@@ -184,11 +182,11 @@ def process_login():
             if password == customer.password:
                 session['user'] = email
             else: 
-                flash('incorrect password, try again buddy!')
+                flash('incorrect email or password, try again buddy!')
                 return redirect("/login")
     else:
         print(session)
-        flash('incorrect email or password. ')
+        flash('incorrect email or password.')
         return redirect("/login")
 
 
