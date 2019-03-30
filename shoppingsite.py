@@ -179,13 +179,17 @@ def process_login():
     email = request.form['email']
     password = request.form['password']
     customer = customers.get_customer_by_email(email)
-
-    if email == customer.email:
-        if password == customer.password:
-            session['user'] = email
-        else: 
-            flash('incorrect password, try again buddy!')
-            return redirect("/login")
+    if customer:
+        if email == customer.email:
+            if password == customer.password:
+                session['user'] = email
+            else: 
+                flash('incorrect password, try again buddy!')
+                return redirect("/login")
+    else:
+        print(session)
+        flash('incorrect email or password. ')
+        return redirect("/login")
 
 
     return redirect("/melons")
