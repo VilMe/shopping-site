@@ -152,7 +152,7 @@ def show_login():
     return render_template("login.html")
 
 
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["POST", "GET"])
 def process_login():
     """Log user into site.
 
@@ -180,6 +180,7 @@ def process_login():
         if email == customer.email:
             if password == customer.password:
                 session['user'] = email
+
             else: 
                 flash('incorrect email or password, try again buddy!')
                 return redirect("/login")
@@ -188,7 +189,7 @@ def process_login():
         flash('incorrect email or password.')
         return redirect("/login")
 
-
+    flash('Success, you are now free to fulfill you melony desires!')
     return redirect("/melons")
 
 
