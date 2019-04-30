@@ -188,6 +188,14 @@ def process_login():
     flash('Success, you are now free to fulfill you melony desires!')
     return redirect("/melons")
 
+@app.route("/logout")
+def process_logout():
+    """Log user out of site.
+
+    Find the user in the session, remove user from session using pop
+    """
+    session.pop('user')
+    return redirect("/login")
 
 @app.route("/checkout")
 def checkout():
