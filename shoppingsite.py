@@ -152,15 +152,13 @@ def show_login():
     return render_template("login.html")
 
 
-@app.route("/login", methods=["POST", "GET"])
+@app.route("/login", methods=["POST"])
 def process_login():
     """Log user into site.
 
     Find the user's login credentials located in the 'request.form'
     dictionary, look up the user, and store them in the session.
     """
-
-    # TODO: Need to implement this!
 
     # The logic here should be something like:
     #
@@ -180,15 +178,13 @@ def process_login():
         if email == customer.email:
             if password == customer.password:
                 session['user'] = email
-
             else: 
                 flash('incorrect email or password, try again buddy!')
                 return redirect("/login")
+    
     else:
-        print(session)
         flash('incorrect email or password.')
         return redirect("/login")
-
     flash('Success, you are now free to fulfill you melony desires!')
     return redirect("/melons")
 
